@@ -13,7 +13,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: golangci-lint
-        uses: golangci/golangci-lint-action@v2
+        uses: golangci/golangci-lint-action@v3
         with:
           version: latest
   test:
@@ -28,7 +28,7 @@ jobs:
       GO111MODULE: on
     steps:
       - name: Setup go ${{ matrix.go_version }} 
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
           go-version: ${{ matrix.go_version }}
       - name: Checkout Source 
@@ -48,7 +48,7 @@ jobs:
       GO111MODULE: on
     steps:
       - name: Setup go
-        uses: actions/setup-go@v2
+        uses: actions/setup-go@v3
         with:
           go-version: '1.17'
       - name: Checkout Source 
