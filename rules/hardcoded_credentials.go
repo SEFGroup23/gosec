@@ -119,7 +119,7 @@ func (r *credentials) matchEqualityCheck(binaryExpr *ast.BinaryExpr, ctx *gosec.
 func NewHardcodedCredentials(id string, conf gosec.Config) (gosec.Rule, []ast.Node) {
 	pattern := `(?i)passwd|pass|password|pwd|secret|token|pw|apiKey|bearer|cred`
 	entropyThreshold := 80.0
-	perCharThreshold := 3.0
+	perCharThreshold := 3.5
 	ignoreEntropy := false
 	truncateString := 16
 	if val, ok := conf["G101"]; ok {

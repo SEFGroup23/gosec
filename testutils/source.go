@@ -230,6 +230,28 @@ func main() {
     bearer = "Bearer: 2lkjdfoiuwer092834kjdwf09"
 	fmt.Println(bearer)
 }`}, 1, gosec.NewConfig()},
+		{[]string{`
+		package main
+
+		import (
+			"database/sql"
+			"os"
+		)
+		
+		func main() {
+			db, err := sql.Open("sqlite3", ":memory:")
+			if err != nil {
+				panic(err)
+			}
+			e_USER_PASSWD := "UPDATE users set password=sha2(?, 256) where id=?"
+			_, err = db.Exec(e_USER_PASSWD, os.Args[1], os.Args[2])
+			if err != nil {
+				panic(err)
+			}
+			defer db.Close()
+		}
+		
+`}, 0, gosec.NewConfig()},
 	}
 
 	// SampleCodeG102 code snippets for network binding
